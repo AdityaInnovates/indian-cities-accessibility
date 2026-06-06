@@ -2,12 +2,11 @@
 
 ## 1) Prototype Link
 
-- Local preview: http://localhost:3000
-- Deployed link: replace with the final public URL before submission
+- Deployed link: https://indian-cities-accessibility.vercel.app
 
 ## 2) Public Dataset Used
 
-- OpenStreetMap public place data, accessed through the Overpass API
+- OpenStreetMap public place data, accessed through the [Overpass API](https://overpass-api.de/api/interpreter)
 - Coverage used in the prototype: hospitals, schools, parks, and bus stops across Indian states
 
 ## 3) 50-Word Note on Why I Selected This Data

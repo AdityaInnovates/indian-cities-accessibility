@@ -269,9 +269,9 @@ export function CityAccessibilityDashboard({
                 national benchmarks.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4 overflow-x-auto">
-              <div className="min-w-[820px] space-y-2">
-                <div className="grid grid-cols-[70px_0.9fr_95px_164px_1.55fr] gap-0 rounded-md bg-black px-3.5 py-2 text-[11px] font-semibold tracking-wide text-slate-200">
+            <CardContent className="space-y-4">
+              <div className="space-y-2 md:hidden">
+                <div className="grid grid-cols-[58px_1fr_96px] gap-2 rounded-md bg-black px-3 py-2 text-[11px] font-semibold tracking-wide text-slate-200">
                   <span>Rank</span>
                   <button
                     type="button"
@@ -288,7 +288,7 @@ export function CityAccessibilityDashboard({
                   <button
                     type="button"
                     onClick={() => handleSort("accessibilityScore")}
-                    className="inline-flex items-center gap-1 text-left hover:text-white"
+                    className="inline-flex items-center justify-end gap-1 text-right hover:text-white"
                   >
                     Score
                     {sortColumn === "accessibilityScore" ? (
@@ -297,8 +297,6 @@ export function CityAccessibilityDashboard({
                       <ArrowUpDown className="size-3.5 opacity-50" />
                     )}
                   </button>
-                  <span>Coverage</span>
-                  <span>Performance</span>
                 </div>
 
                 <div className="space-y-2">
@@ -310,81 +308,191 @@ export function CityAccessibilityDashboard({
                         type="button"
                         key={city.city}
                         onClick={() => setSelectedCityName(city.city)}
-                        className={`grid w-full grid-cols-[70px_0.9fr_95px_164px_1.55fr] items-center gap-0 border px-3.5 py-2.5 text-left transition ${
+                        className={`grid w-full grid-cols-[58px_1fr_96px] gap-2 border px-3 py-2.5 text-left transition ${
                           isSelected
                             ? "border-amber-400 bg-[#171717]"
                             : "border-slate-800 bg-[#121212] hover:border-slate-700"
                         }`}
                       >
-                        <div className="text-3xl font-bold leading-none text-amber-400">
+                        <div className="self-center text-2xl font-bold leading-none text-amber-400">
                           #{city.rank}
                         </div>
 
-                        <div className="self-center width-min-content">
-                          <p className="text-[1.5rem] leading-tight font-semibold text-white md:text-[1rem]">
+                        <div className="self-center">
+                          <p className="line-clamp-2 text-lg leading-tight font-semibold text-white">
                             {city.city}
                           </p>
                         </div>
 
-                        <div className="self-center">
-                          <p className="text-[1.7rem] font-bold leading-none text-amber-400 md:text-[1.5rem]">
+                        <div className="self-center text-right">
+                          <p className="text-3xl font-bold leading-none text-amber-400">
                             {city.accessibilityScore.toFixed(1)}
                           </p>
-                          <p className="text-sm text-slate-400">/100.0</p>
+                          <p className="text-xs text-slate-400">/100.0</p>
                         </div>
 
-                        <div className="self-center space-y-0.5 text-[1.02rem] text-slate-300 md:text-[0.98rem]">
+                        <div className="col-span-3 mt-1 space-y-1 text-xs text-slate-300">
                           <p>
                             Data pts:{" "}
                             <span className="font-semibold text-white">
                               {formatNumber(getCoverageDataPoints(city))}
-                            </span>
-                          </p>
-                          <p>
-                            Area:{" "}
+                            </span>{" "}
+                            | Area:{" "}
                             <span className="font-semibold text-white">
                               {formatNumber(city.areaKm2)}
                             </span>
                           </p>
-                        </div>
-
-                        <div className="self-center">
-                          <div className="grid grid-cols-3 gap-1 w-[11rem]">
-                            <span className="rounded border flex flex-col border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
-                              <span>Hosp </span>
+                          <div className="flex flex-wrap gap-1">
+                            <span className="rounded border border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
+                              Hosp{" "}
                               {city.percentileByMetric.hospitals.toFixed(1)}
                             </span>
-                            <span className="rounded border flex flex-col border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
-                              <span>Sch </span>
-                              {city.percentileByMetric.schools.toFixed(1)}
+                            <span className="rounded border border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
+                              Sch {city.percentileByMetric.schools.toFixed(1)}
                             </span>
-                            <span className="rounded border flex flex-col border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
-                              <span>Park </span>
-                              {city.percentileByMetric.parks.toFixed(1)}
+                            <span className="rounded border border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
+                              Park {city.percentileByMetric.parks.toFixed(1)}
                             </span>
-                            <span className="rounded border flex flex-col border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
-                              <span>Bus </span>
-                              {city.percentileByMetric.busStops.toFixed(1)}
+                            <span className="rounded border border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
+                              Bus {city.percentileByMetric.busStops.toFixed(1)}
                             </span>
-                            <span className="rounded border flex flex-col border-slate-600 bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-sky-200">
-                              <span>NatP </span>
-                              {city.nationalPercentile.toFixed(1)}
+                            <span className="rounded border border-slate-600 bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-sky-200">
+                              NatP {city.nationalPercentile.toFixed(1)}
                             </span>
                             <span
-                              className={`rounded border flex flex-col px-1.5 py-0.5 text-[10px] font-semibold ${
+                              className={`rounded border px-1.5 py-0.5 text-[10px] font-semibold ${
                                 city.gapVsMedianPct >= 0
                                   ? "border-emerald-700/70 bg-emerald-950/35 text-emerald-200"
                                   : "border-rose-700/70 bg-rose-950/35 text-rose-200"
                               }`}
                             >
-                              <span>Gap </span>
-                              {formatSignedPercent(city.gapVsMedianPct)}
+                              Gap {formatSignedPercent(city.gapVsMedianPct)}
                             </span>
                           </div>
                         </div>
                       </button>
                     );
                   })}
+                </div>
+              </div>
+
+              <div className="hidden overflow-x-auto md:block">
+                <div className="min-w-[690px] space-y-2">
+                  <div className="grid grid-cols-[70px_1fr_1fr_1fr_1fr] gap-0 rounded-md bg-black px-3.5 py-2 text-[11px] font-semibold tracking-wide text-slate-200">
+                    <span>Rank</span>
+                    <button
+                      type="button"
+                      onClick={() => handleSort("city")}
+                      className="inline-flex items-center gap-1 text-left hover:text-white"
+                    >
+                      {firstColumnLabel}
+                      {sortColumn === "city" ? (
+                        <ArrowDownUp className="size-3.5" />
+                      ) : (
+                        <ArrowUpDown className="size-3.5 opacity-50" />
+                      )}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleSort("accessibilityScore")}
+                      className="inline-flex items-center gap-1 text-left hover:text-white"
+                    >
+                      Score
+                      {sortColumn === "accessibilityScore" ? (
+                        <ArrowDownUp className="size-3.5" />
+                      ) : (
+                        <ArrowUpDown className="size-3.5 opacity-50" />
+                      )}
+                    </button>
+                    <span>Coverage</span>
+                    <span>Performance</span>
+                  </div>
+
+                  <div className="space-y-2">
+                    {visibleCities.map((city) => {
+                      const isSelected = selectedCityName === city.city;
+
+                      return (
+                        <button
+                          type="button"
+                          key={city.city}
+                          onClick={() => setSelectedCityName(city.city)}
+                          className={`grid w-full grid-cols-[70px_1fr_95px_164px_0.5fr] items-center gap-0 border px-3.5 py-2.5 text-left transition ${
+                            isSelected
+                              ? "border-amber-400 bg-[#171717]"
+                              : "border-slate-800 bg-[#121212] hover:border-slate-700"
+                          }`}
+                        >
+                          <div className="text-3xl font-bold leading-none text-amber-400">
+                            #{city.rank}
+                          </div>
+
+                          <div className="self-center">
+                            <p className="w-[90%] text-[1.5rem] leading-tight font-semibold text-white md:text-[1rem]">
+                              {city.city}
+                            </p>
+                          </div>
+
+                          <div className="self-center">
+                            <p className="text-[1.7rem] font-bold leading-none text-amber-400 md:text-[1.5rem]">
+                              {city.accessibilityScore.toFixed(1)}
+                            </p>
+                            <p className="text-sm text-slate-400">/100.0</p>
+                          </div>
+
+                          <div className="self-center space-y-0.5 text-[1.02rem] text-slate-300 md:text-[0.98rem]">
+                            <p>
+                              Data pts:{" "}
+                              <span className="font-semibold text-white">
+                                {formatNumber(getCoverageDataPoints(city))}
+                              </span>
+                            </p>
+                            <p>
+                              Area:{" "}
+                              <span className="font-semibold text-white">
+                                {formatNumber(city.areaKm2)}
+                              </span>
+                            </p>
+                          </div>
+
+                          <div className="self-center">
+                            <div className="grid w-[11rem] grid-cols-3 gap-1">
+                              <span className="flex flex-col rounded border border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
+                                <span>Hosp </span>
+                                {city.percentileByMetric.hospitals.toFixed(1)}
+                              </span>
+                              <span className="flex flex-col rounded border border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
+                                <span>Sch </span>
+                                {city.percentileByMetric.schools.toFixed(1)}
+                              </span>
+                              <span className="flex flex-col rounded border border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
+                                <span>Park </span>
+                                {city.percentileByMetric.parks.toFixed(1)}
+                              </span>
+                              <span className="flex flex-col rounded border border-amber-700/70 bg-amber-950/35 px-1.5 py-0.5 text-[10px] font-semibold text-amber-200">
+                                <span>Bus </span>
+                                {city.percentileByMetric.busStops.toFixed(1)}
+                              </span>
+                              <span className="flex flex-col rounded border border-slate-600 bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-sky-200">
+                                <span>NatP </span>
+                                {city.nationalPercentile.toFixed(1)}
+                              </span>
+                              <span
+                                className={`flex flex-col rounded border px-1.5 py-0.5 text-[10px] font-semibold ${
+                                  city.gapVsMedianPct >= 0
+                                    ? "border-emerald-700/70 bg-emerald-950/35 text-emerald-200"
+                                    : "border-rose-700/70 bg-rose-950/35 text-rose-200"
+                                }`}
+                              >
+                                <span>Gap </span>
+                                {formatSignedPercent(city.gapVsMedianPct)}
+                              </span>
+                            </div>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 

@@ -377,7 +377,7 @@ export function CityAccessibilityDashboard({
               </div>
 
               <div className="hidden overflow-x-auto md:block">
-                <div className="min-w-[690px] space-y-2">
+                <div className="min-w-[688px] space-y-2">
                   <div className="grid grid-cols-[70px_1fr_1fr_1fr_1fr] gap-0 rounded-md bg-black px-3.5 py-2 text-[11px] font-semibold tracking-wide text-slate-200">
                     <span>Rank</span>
                     <button

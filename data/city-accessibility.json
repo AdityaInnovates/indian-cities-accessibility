@@ -1,0 +1,42 @@
+[
+  {
+    "city": "Delhi",
+    "areaKm2": 1484,
+    "hospitals": 410,
+    "schools": 733,
+    "parks": 2955,
+    "busStops": 1463
+  },
+  {
+    "city": "Mumbai",
+    "areaKm2": 603,
+    "hospitals": 356,
+    "schools": 684,
+    "parks": 1120,
+    "busStops": 1950
+  },
+  {
+    "city": "Bengaluru",
+    "areaKm2": 741,
+    "hospitals": 298,
+    "schools": 821,
+    "parks": 1475,
+    "busStops": 2320
+  },
+  {
+    "city": "Chennai",
+    "areaKm2": 426,
+    "hospitals": 264,
+    "schools": 702,
+    "parks": 980,
+    "busStops": 1785
+  },
+  {
+    "city": "Hyderabad",
+    "areaKm2": 650,
+    "hospitals": 289,
+    "schools": 645,
+    "parks": 1210,
+    "busStops": 1672
+  }
+]
